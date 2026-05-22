@@ -12,7 +12,8 @@ import java.sql.*;
 public class RegistrationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter p = response.getWriter();
 
@@ -63,7 +64,7 @@ public class RegistrationServlet extends HttpServlet {
                 psmt.setString(8, specialization);
                 psmt.setString(9, password);
                 psmt.executeUpdate();
-                
+
                 response.sendRedirect("login.jsp?status=registered");
             }
         } catch (Exception e) {
@@ -74,7 +75,8 @@ public class RegistrationServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doPost(request, response);
     }
 }
