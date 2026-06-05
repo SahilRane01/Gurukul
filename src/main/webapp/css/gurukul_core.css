@@ -31,6 +31,7 @@
 
 /* ANIMATIONS */
 @keyframes blink { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; } }
+@keyframes blink-cursor { from, to { border-color: transparent; } 50% { border-color: var(--primary-red); } }
 @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(300%); } }
 @keyframes entry { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes typing { from { width: 0 } to { width: 100% } }
@@ -120,7 +121,7 @@
     overflow: hidden; 
     border-right: .15em solid var(--primary-red); 
     white-space: nowrap; 
-    animation: typing 3.5s steps(40, end), blink .75s step-end infinite; 
+    animation: typing 3.5s steps(40, end), blink-cursor .75s step-end infinite; 
 }
 
 .chat-bubble-ai { 

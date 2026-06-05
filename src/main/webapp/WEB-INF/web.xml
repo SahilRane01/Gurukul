@@ -137,6 +137,15 @@
     <url-pattern>/submitAction</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AiChatServlet</servlet-name>
+    <servlet-class>com.gurukul.controllers.AiChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AiChatServlet</servlet-name>
+    <url-pattern>/aiChat</url-pattern>
+  </servlet-mapping>
+
   <!-- Global Context Parameters -->
   <context-param>
     <param-name>DB_URL</param-name>
@@ -152,5 +161,5 @@
     <param-name>DB_PWD</param-name>
     <param-value>Admin</param-value>
   </context-param>
-  <!-- Trigger reload 2 -->
+  <!-- Trigger reload 3 -->
 </web-app>

@@ -15,7 +15,7 @@ public class TeacherController extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
-        userProfileBean user = (session != null) ? (userProfileBean) session.getAttribute("user") : null;
+        com.gurukul.models.UserProfile user = (session != null) ? (com.gurukul.models.UserProfile) session.getAttribute("user") : null;
 
         if (user == null || !"Teacher".equalsIgnoreCase(user.getRole())) {
             response.sendRedirect("login.jsp");

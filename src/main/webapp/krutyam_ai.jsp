@@ -1,9 +1,227 @@
-<%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat, java.io.*, java.net.*" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
+<%
+    // --- AI PROXY LOGIC ---
+    if ("POST".equalsIgnoreCase(request.getMethod()) && request.getContentType() != null && request.getContentType().contains("application/json")) {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try (BufferedReader r = request.getReader()) {
+            while ((line = r.readLine()) != null) sb.append(line);
+        }
+        String body = sb.toString();
+
+        // Check for context injection
+        String parsedPrompt = "";
+        String parsedUsername = "User";
+        try {
+            int pIdx = body.indexOf("\"prompt\":\"");
+            if(pIdx != -1) {
+                int start = pIdx + 10;
+                int end = body.indexOf("\"", start);
+                parsedPrompt = body.substring(start, end);
+            }
+            int uIdx = body.indexOf("\"username\":\"");
+            if(uIdx != -1) {
+                int start = uIdx + 12;
+                int end = body.indexOf("\"", start);
+                parsedUsername = body.substring(start, end);
+            }
+        } catch(Exception e){}
+
+        String contextStr = "";
+        com.gurukul.models.UserProfile sessionUser = (com.gurukul.models.UserProfile) session.getAttribute("user");
+        if(sessionUser != null && parsedPrompt != null && !parsedPrompt.trim().isEmpty()) {
+            String pLower = parsedPrompt.toLowerCase();
+            try (java.sql.Connection conn = DBConnection.getConnection(application)) {
+                if(pLower.contains("event")) {
+                    String sql = "SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql);
+                        ResultSet rs = ps.executeQuery()) {
+                        while(rs.next()) contextStr += rs.getString("event_name") + " on " + rs.getDate("event_date") + "; ";
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("result")) {
+                    String sql = "SELECT r.*, c.name as class_name FROM student_results r JOIN classes c ON r.class_id = c.id WHERE r.student_id = ?";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setInt(1, sessionUser.getId());
+                        try(ResultSet rs = ps.executeQuery()) {
+                            while(rs.next()) contextStr += rs.getString("class_name") + " Grade " + rs.getString("grade") + " (" + rs.getString("status") + "); ";
+                        }
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("quiz")) {
+                    String sql = "SELECT q.title, qs.score FROM quizzes q JOIN classes c ON q.class_id = c.id JOIN class_students cs ON c.id = cs.class_id LEFT JOIN quiz_submissions qs ON q.id = qs.quiz_id AND qs.student_id = cs.student_id WHERE cs.student_id = ? ORDER BY q.created_at DESC LIMIT 5";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setInt(1, sessionUser.getId());
+                        try(ResultSet rs = ps.executeQuery()) {
+                            while(rs.next()) contextStr += rs.getString("title") + (rs.getString("score") != null ? " (Score: " + rs.getString("score") + ")" : " (Pending)") + "; ";
+                        }
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("assignment")) {
+                    String sql = "SELECT a.title, a.due_date, (CASE WHEN s.grade IS NOT NULL THEN 'GRADED' WHEN s.id IS NOT NULL THEN 'SUBMITTED' ELSE 'PENDING' END) as status FROM assignments a JOIN classes c ON a.class_id = c.id JOIN class_students cs ON c.id = cs.class_id LEFT JOIN submissions s ON a.id = s.assignment_id AND s.student_id = cs.student_id WHERE cs.student_id = ? ORDER BY a.due_date ASC LIMIT 10";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setInt(1, sessionUser.getId());
+                        try(ResultSet rs = ps.executeQuery()) {
+                            while(rs.next()) contextStr += rs.getString("title") + " due " + rs.getString("due_date") + " Status: " + rs.getString("status") + "; ";
+                        }
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("notice")) {
+                    String sql = "SELECT * FROM noticeboard ORDER BY created_at DESC LIMIT 5";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql);
+                        ResultSet rs = ps.executeQuery()) {
+                        while(rs.next()) contextStr += rs.getString("heading") + " - " + rs.getString("body") + " (To: " + rs.getString("whom") + "); ";
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("meeting")) {
+                    String sql = "SELECT * FROM meetings WHERE status = 'ACTIVE' ORDER BY created_at DESC";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql);
+                        ResultSet rs = ps.executeQuery()) {
+                        while(rs.next()) contextStr += rs.getString("teacher_name") + " has an active session titled '" + rs.getString("heading") + "'; ";
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("attendance")) {
+                    String sql = "SELECT COUNT(*) as total, SUM(CASE WHEN status='PRESENT' THEN 1 ELSE 0 END) as present_count FROM attendance WHERE student_id = ?";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setInt(1, sessionUser.getId());
+                        try(ResultSet rs = ps.executeQuery()) {
+                            if(rs.next()) contextStr += rs.getInt("present_count") + " present out of " + rs.getInt("total") + " classes; ";
+                        }
+                    }
+                    contextStr += "] ";
+                }
+                if(pLower.contains("class")) {
+                    String sql = "SELECT c.name FROM classes c JOIN class_students cs ON c.id = cs.class_id WHERE cs.student_id = ?";
+                    contextStr += "[SQL Executed: " + sql + "] [Results: ";
+                    try(PreparedStatement ps = conn.prepareStatement(sql)) {
+                        ps.setInt(1, sessionUser.getId());
+                        try(ResultSet rs = ps.executeQuery()) {
+                            while(rs.next()) contextStr += rs.getString("name") + "; ";
+                        }
+                    }
+                    contextStr += "] ";
+                }
+            } catch(Exception e) {}
+        }
+
+        if(!contextStr.isEmpty()) {
+            String newPrompt = "Context: " + contextStr + " User request: " + parsedPrompt;
+            newPrompt = newPrompt.replace("\"", "\\\""); // escape quotes
+            body = "{\"username\":\"" + parsedUsername + "\",\"prompt\":\"" + newPrompt + "\"}";
+        }
+
+        HttpURLConnection conn = null;
+        try {
+            URL url = new URL("https://lyricist-justly-visiting.ngrok-free.dev/chat");
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setConnectTimeout(60000); // 1 minute to connect
+            conn.setReadTimeout(300000); // 5 minutes to wait for the AI response
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setRequestProperty("ngrok-skip-browser-warning", "true");
+            conn.setRequestProperty("User-Agent", "GurkulServer/1.0");
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(body.getBytes("UTF-8"));
+                os.flush();
+            }
+
+            int status = conn.getResponseCode();
+            InputStream is = (status >= 200 && status < 300) ? conn.getInputStream() : conn.getErrorStream();
+
+            StringBuilder resp = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {
+                String ln;
+                while ((ln = br.readLine()) != null) resp.append(ln);
+            }
+
+            String finalResponse = resp.toString();
+            response.setContentType("application/json");
+            response.setStatus(status);
+            
+            // Store the interaction in the database
+            try (java.sql.Connection dbConn = DBConnection.getConnection(application)) {
+                try (Statement st = dbConn.createStatement()) {
+                    st.execute("CREATE TABLE IF NOT EXISTS ai_chats (id INT AUTO_INCREMENT PRIMARY KEY, student_id INT NOT NULL, prompt TEXT, response TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+                }
+                if (sessionUser != null) {
+                    try (PreparedStatement psLog = dbConn.prepareStatement("INSERT INTO ai_chats (student_id, prompt, response) VALUES (?, ?, ?)")) {
+                        psLog.setInt(1, sessionUser.getId());
+                        psLog.setString(2, parsedPrompt);
+                        psLog.setString(3, finalResponse);
+                        psLog.executeUpdate();
+                    }
+                }
+            } catch (Exception e) {
+                // Ignore DB logging errors to not break the API response
+            }
+            
+            out.print(finalResponse);
+        } catch (Exception e) {
+            response.setStatus(500);
+            out.print("{\"response\": \"AI service error: " + e.getMessage().replace("\"", "'") + "\"}");
+        } finally {
+            if (conn != null) conn.disconnect();
+        }
+        return; // Stop rendering the rest of the page for API calls
+    }
+    // --- END PROXY LOGIC ---
+%>
 <%
     if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp");
         return;
+    }
+    
+    boolean isStudent = "Student".equalsIgnoreCase(user.getRole());
+    double attendancePercentage = 0.0;
+    int pendingAssignments = 0;
+    
+    if (isStudent) {
+        int totalClasses = 0;
+        int presentCount = 0;
+        try (Connection conn = DBConnection.getConnection(getServletContext())) {
+            String statsSql = "SELECT COUNT(*) as total, SUM(CASE WHEN status='PRESENT' THEN 1 ELSE 0 END) as present_count FROM attendance WHERE student_id = ?";
+            try (PreparedStatement ps = conn.prepareStatement(statsSql)) {
+                ps.setInt(1, user.getId());
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) { 
+                        totalClasses = rs.getInt("total"); 
+                        presentCount = rs.getInt("present_count"); 
+                    }
+                }
+            }
+            if (totalClasses > 0) {
+                attendancePercentage = (presentCount * 100.0) / totalClasses;
+            }
+            
+            String pendingSql = "SELECT COUNT(*) as pending_count FROM assignments a JOIN class_students cs ON a.class_id = cs.class_id LEFT JOIN submissions s ON a.id = s.assignment_id AND s.student_id = cs.student_id WHERE cs.student_id = ? AND s.id IS NULL";
+            try (PreparedStatement psPending = conn.prepareStatement(pendingSql)) {
+                psPending.setInt(1, user.getId());
+                try (ResultSet rsPending = psPending.executeQuery()) {
+                    if (rsPending.next()) {
+                        pendingAssignments = rsPending.getInt("pending_count");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 %>
 <!DOCTYPE html>
@@ -115,11 +333,11 @@
                             <div class="grid grid-cols-2 gap-4 bg-white/50 p-4 rounded-xl border border-black/5">
                                 <div>
                                     <span class="text-[8px] text-gray-400 uppercase font-bold tracking-widest">Attendance %</span>
-                                    <p class="text-xl font-[Orbitron] text-gray-900">88.5%</p>
+                                    <p class="text-xl font-[Orbitron] text-gray-900"><%= isStudent ? String.format("%.1f", attendancePercentage) + "%" : "N/A" %></p>
                                 </div>
                                 <div>
                                     <span class="text-[8px] text-gray-400 uppercase font-bold tracking-widest">Status</span>
-                                    <p class="text-xl font-[Orbitron] text-green-500">EXCELLENT</p>
+                                    <p class="text-xl font-[Orbitron] <%= isStudent && attendancePercentage >= 75 ? "text-green-500" : (isStudent ? "text-red-500" : "text-gray-500") %>"><%= isStudent ? (attendancePercentage >= 75 ? "EXCELLENT" : "WARNING") : "N/A" %></p>
                                 </div>
                             </div>
                         </div>
@@ -128,10 +346,14 @@
 
                 <!-- SUGGESTED PROMPTS -->
                 <div class="flex flex-wrap gap-3 mb-6">
-                    <div class="prompt-chip" onclick="sendPrompt('Show my attendance summary')">Show my attendance summary</div>
                     <div class="prompt-chip" onclick="sendPrompt('Upcoming events')">Upcoming events</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Explain Data Science Unit 1')">Explain Data Science Unit 1</div>
-                    <div class="prompt-chip" onclick="sendPrompt('Generate exam preparation summary')">Generate exam prep</div>
+                    <div class="prompt-chip" onclick="sendPrompt('My results')">Their results</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Upcoming quizzes')">Upcoming quizzes</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Upcoming assignments')">Upcoming assignments</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Notices')">Notices</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Upcoming classes')">Upcoming classes</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Upcoming meetings')">Upcoming meetings</div>
+                    <div class="prompt-chip" onclick="sendPrompt('Attendance')">Attendance</div>
                 </div>
 
                 <!-- INPUT AREA -->
@@ -149,14 +371,14 @@
                 
                 <div class="space-y-8">
                     <!-- ATTENDANCE -->
-                    <div class="glass p-6 rounded-2xl border-l-4 border-red-500">
+                    <div class="glass p-6 rounded-2xl border-l-4 <%= isStudent && attendancePercentage >= 75 ? "border-green-500" : "border-red-500" %>">
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">Attendance</span>
-                            <i data-lucide="activity" class="w-4 h-4 text-red-500"></i>
+                            <i data-lucide="activity" class="w-4 h-4 <%= isStudent && attendancePercentage >= 75 ? "text-green-500" : "text-red-500" %>"></i>
                         </div>
-                        <div class="text-3xl font-[Orbitron] text-gray-900 mb-2">88.5%</div>
+                        <div class="text-3xl font-[Orbitron] text-gray-900 mb-2"><%= isStudent ? String.format("%.1f", attendancePercentage) + "%" : "N/A" %></div>
                         <div class="w-full h-1 bg-black/5 rounded-full overflow-hidden">
-                            <div class="h-full bg-red-500" style="width: 88.5%"></div>
+                            <div class="h-full <%= isStudent && attendancePercentage >= 75 ? "bg-green-500" : "bg-red-500" %>" style="width: <%= isStudent ? Math.min(attendancePercentage, 100) : 0 %>%"></div>
                         </div>
                     </div>
 
@@ -166,7 +388,7 @@
                             <span class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">Assignments</span>
                             <i data-lucide="file-text" class="w-4 h-4 text-gray-900"></i>
                         </div>
-                        <div class="text-3xl font-[Orbitron] text-gray-900 mb-1">03</div>
+                        <div class="text-3xl font-[Orbitron] text-gray-900 mb-1"><%= isStudent ? String.format("%02d", pendingAssignments) : "N/A" %></div>
                         <p class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">Pending Submissions</p>
                     </div>
 
@@ -210,9 +432,21 @@
             
             if (isAi) {
                 const p = document.createElement('p');
-                p.className = 'typing-effect';
-                p.innerText = text;
+                p.style.whiteSpace = 'pre-wrap'; // Ensure line breaks work and text wraps
                 bubble.appendChild(p);
+                
+                // JavaScript typing effect that supports multi-line text
+                let i = 0;
+                const speed = 15; // ms per character
+                function typeChar() {
+                    if (i < text.length) {
+                        p.textContent += text.charAt(i);
+                        i++;
+                        container.scrollTop = container.scrollHeight;
+                        setTimeout(typeChar, speed);
+                    }
+                }
+                typeChar();
             } else {
                 bubble.innerHTML = `<p>\${text}</p>`;
             }
@@ -223,11 +457,41 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        function sendPrompt(text) {
+        const MY_NAME = "<%= user.getFullName() %>";
+
+        async function sendPrompt(text) {
             appendMessage('user', text);
-            setTimeout(() => {
-                appendMessage('ai', "I'm processing your request regarding '" + text + "'. One moment...", true);
-            }, 600);
+            
+            // Show loading indicator in UI
+            const div = document.createElement('div');
+            div.id = 'ai-loading';
+            div.className = 'flex gap-4 items-start';
+            div.innerHTML = `
+                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0">K</div>
+                <div class="chat-bubble-ai flex items-center gap-1">
+                    <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-pulse"></div>
+                    <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-pulse" style="animation-delay:0.2s"></div>
+                    <div class="w-1.5 h-1.5 bg-gray-500 rounded-full animate-pulse" style="animation-delay:0.4s"></div>
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            
+            try {
+                const response = await fetch('krutyam_ai.jsp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: MY_NAME, prompt: text })
+                });
+                
+                const data = await response.json();
+                
+                document.getElementById('ai-loading')?.remove();
+                appendMessage('ai', data.response || "Sorry, I couldn't process that.", true);
+            } catch (err) {
+                document.getElementById('ai-loading')?.remove();
+                appendMessage('ai', "Error connecting to AI service.", true);
+            }
         }
 
         sendBtn.addEventListener('click', () => {

@@ -18,7 +18,7 @@ public class MeetingServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        userProfileBean user = (userProfileBean) session.getAttribute("user");
+        com.gurukul.models.UserProfile user = (com.gurukul.models.UserProfile) session.getAttribute("user");
 
         if (user == null || !"Teacher".equalsIgnoreCase(user.getRole())) {
             response.sendRedirect("login.jsp");

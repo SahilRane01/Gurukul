@@ -208,6 +208,10 @@
                         <i data-lucide="users" class="w-5 h-5 text-gray-400 group-hover:text-red-500"></i>
                         <span class="hidden md:group-hover/sidebar:block font-[Orbitron] text-[10px] tracking-widest font-bold uppercase">Alumni</span>
                     </a>
+                    <a href="briefings.jsp" class="group/item flex items-center gap-4 p-4 hover:bg-red-500/5 w-full">
+                        <i data-lucide="file-text" class="w-5 h-5 text-gray-400 group-hover:text-red-500"></i>
+                        <span class="hidden md:group-hover/sidebar:block font-[Orbitron] text-[10px] tracking-widest font-bold uppercase">Briefings</span>
+                    </a>
                     <a href="krutyam_ai.jsp" class="group/item flex items-center gap-4 p-4 hover:bg-red-500/5 w-full">
                         <i data-lucide="sparkles" class="w-5 h-5 text-gray-400 group-hover:text-red-500"></i>
                         <span class="hidden md:group-hover/sidebar:block font-[Orbitron] text-[10px] tracking-widest font-bold uppercase">Krutyam AI</span>
