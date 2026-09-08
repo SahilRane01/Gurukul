@@ -21,7 +21,8 @@
             String defSql = "SELECT u.id, u.full_name, u.course, u.batch, " +
                 "COUNT(a.id) as total, SUM(CASE WHEN a.status='PRESENT' THEN 1 ELSE 0 END) as present_count " +
                 "FROM users u LEFT JOIN attendance a ON u.id = a.student_id " +
-                "WHERE u.role = 'Student' GROUP BY u.id HAVING total > 0 ORDER BY (present_count/total) ASC";
+                "WHERE u.role = 'Student' GROUP BY u.id HAVING total > 0 " +
+                "ORDER BY (SUM(CASE WHEN a.status='PRESENT' THEN 1 ELSE 0 END) / COUNT(a.id)) ASC";
             try (PreparedStatement ps = conn.prepareStatement(defSql); ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     int t = rs.getInt("total"); int p = rs.getInt("present_count");
