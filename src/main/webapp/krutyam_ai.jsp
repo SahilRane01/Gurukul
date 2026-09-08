@@ -120,7 +120,11 @@
 
         if(!contextStr.isEmpty()) {
             String newPrompt = "Context: " + contextStr + " User request: " + parsedPrompt;
-            newPrompt = newPrompt.replace("\"", "\\\""); // escape quotes
+            newPrompt = newPrompt.replace("\"", "\\\"")
+                                 .replace("\n", " ")
+                                 .replace("\r", " ")
+                                 .replace("\t", " ")
+                                 .replace("\\", "\\\\"); // escape quotes, newlines, tabs and backslashes
             body = "{\"username\":\"" + parsedUsername + "\",\"prompt\":\"" + newPrompt + "\"}";
         }
 
