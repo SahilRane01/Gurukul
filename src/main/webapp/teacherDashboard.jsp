@@ -1,3 +1,11 @@
+<%--
+  File: teacherDashboard.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The teacher's big desk! It has shortcuts to take attendance, give homework, check tests, and start video calls.
+  - WHY IT IS USED: Gives teachers super-powers to run their whole class easily from one screen!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

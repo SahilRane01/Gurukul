@@ -1,3 +1,11 @@
+/**
+ * File: ClassController.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is the classroom door guard! It creates classrooms and lets students enter using a secret code.
+ * - WHY IT IS USED: So every student gets into the right room with their own friends and teacher!
+ */
+
 package com.gurukul.controllers;
 
 import com.gurukul.models.UserProfile;

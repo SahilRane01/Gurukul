@@ -1,3 +1,11 @@
+/**
+ * File: QuizSubmission.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is the finished test paper showing the final score (like 9 out of 10 stars!).
+ * - WHY IT IS USED: So the student and teacher can see how well the student did on the quiz.
+ */
+
 package com.gurukul.models;
 
 import java.sql.Timestamp;

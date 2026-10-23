@@ -1,3 +1,11 @@
+<%--
+  File: classes.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: Shows colorful doors for every class you take (Math, English, Science). You can also join a new class!
+  - WHY IT IS USED: So you can choose which subject you want to jump into today!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <% 

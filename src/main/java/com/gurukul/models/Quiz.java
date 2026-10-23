@@ -1,3 +1,11 @@
+/**
+ * File: Quiz.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is a game test booklet with a title, a timer clock, and questions.
+ * - WHY IT IS USED: So teachers can give fun mini-tests to see how much kids learned!
+ */
+
 package com.gurukul.models;
 
 import java.util.Date;

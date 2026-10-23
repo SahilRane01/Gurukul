@@ -1,3 +1,11 @@
+/**
+ * File: SignalingEndpoint.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is like two tin cans connected by a string! It connects your camera directly to your friend's camera.
+ * - WHY IT IS USED: So video and voice can fly super fast between kids and teachers without lag!
+ */
+
 package com.gurukul.controllers;
 
 import jakarta.websocket.*;

@@ -1,3 +1,11 @@
+<%--
+  File: index.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The front porch of Gurukul! If you are already logged in, it opens your room. If not, it asks you to sign in.
+  - WHY IT IS USED: It is the first door everyone knocks on when visiting the website!
+--%>
+
 <%@ page import="com.gurukul.models.UserProfile" %>
 <% 
     UserProfile userProfile = (UserProfile) session.getAttribute("user");
@@ -63,6 +71,9 @@
             <div class="border-l-4 border-black pl-8 py-4">
                 <p class="text-2xl font-medium text-gray-800 mb-4 leading-tight uppercase tracking-tight">The ultimate platform for modern academic excellence.</p>
                 <p class="text-gray-400 text-xs leading-loose max-w-md font-bold uppercase tracking-widest italic opacity-60">Integrated Learning Environment optimized for precision Sessions and centralized Student Management.</p>
+                <div class="mt-4 pt-3 border-t border-black/10 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600">
+                    Made by <span class="text-red-500 font-extrabold">Neha Mhatre</span>, <span class="text-red-500 font-extrabold">Sahil Rane</span>, <span class="text-red-500 font-extrabold">Shriyash Patil</span> and <span class="text-red-500 font-extrabold">Sandesh</span>
+                </div>
             </div>
             <div class="bg-black text-white p-12 relative overflow-hidden group">
                 <div class="absolute top-0 right-0 p-4 text-[9px] font-mono opacity-20">ONLINE</div>
@@ -91,12 +102,10 @@
       </section>
     </main>
 
-    <footer class="p-8 border-t border-black/5 text-[9px] text-gray-400 font-bold uppercase tracking-[0.4em] flex justify-between bg-white/50 backdrop-blur-md">
+    <footer class="p-8 border-t border-black/5 text-[9px] text-gray-500 font-bold uppercase tracking-[0.25em] flex flex-col md:flex-row justify-between items-center gap-4 bg-white/50 backdrop-blur-md">
       <span>© 2026 GURUKUL_SYSTEMS_CORE</span>
-      <div class="flex gap-8">
-        <span>S_PANDIT</span>
-        <span>S_RANE</span>
-        <span>S_PAWAR</span>
+      <div class="text-[10px] tracking-[0.2em] text-gray-700 font-semibold">
+        Made by <span class="text-red-500 font-bold">Neha Mhatre</span>, <span class="text-red-500 font-bold">Sahil Rane</span>, <span class="text-red-500 font-bold">Shriyash Patil</span> and <span class="text-red-500 font-bold">Sandesh</span>
       </div>
     </footer>
   </div>

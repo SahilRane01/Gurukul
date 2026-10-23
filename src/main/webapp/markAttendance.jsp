@@ -1,3 +1,11 @@
+<%--
+  File: markAttendance.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The teacher's attendance sheet with green checkmarks for kids who are here today!
+  - WHY IT IS USED: To see who is in class and make sure nobody went missing!
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.UserProfile, com.gurukul.utils.DBConnection" %>
 <%

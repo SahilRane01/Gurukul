@@ -1,3 +1,11 @@
+<%--
+  File: login.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The sign-in door where you type your name and secret password.
+  - WHY IT IS USED: To keep strangers out and make sure only real students and teachers enter the school!
+--%>
+
 <%@ page import="com.gurukul.models.UserProfile" %>
 <% 
     UserProfile userProfile = (UserProfile) session.getAttribute("user");

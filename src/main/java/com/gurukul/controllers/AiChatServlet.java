@@ -1,3 +1,11 @@
+/**
+ * File: AiChatServlet.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is like a messenger boy running to ask the smart robot brain your question and running back with the answer.
+ * - WHY IT IS USED: So when a kid asks for help with math or science, the smart AI robot can answer right away!
+ */
+
 package com.gurukul.controllers;
 
 import jakarta.servlet.ServletException;

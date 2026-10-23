@@ -1,3 +1,11 @@
+/**
+ * File: UserProfile.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is like a student ID badge with your picture, name, role (Teacher or Student), and class.
+ * - WHY IT IS USED: So the school computer knows exactly who you are whenever you log in!
+ */
+
 package com.gurukul.models;
 
 import java.io.Serializable;

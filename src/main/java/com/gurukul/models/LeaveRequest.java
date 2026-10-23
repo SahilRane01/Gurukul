@@ -1,3 +1,11 @@
+/**
+ * File: LeaveRequest.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is a sick note or permission slip asking: "Teacher, can I stay home today?"
+ * - WHY IT IS USED: So the teacher can read the note and click Yes (Approved) or No (Rejected)!
+ */
+
 package com.gurukul.models;
 
 import java.io.Serializable;

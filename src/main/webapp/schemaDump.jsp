@@ -1,3 +1,11 @@
+<%--
+  File: schemaDump.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: A peek inside the computer's memory box to show programmers all the list names and data cubbies.
+  - WHY IT IS USED: For the tech doctor to see if all database boxes are neatly in place!
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*, com.gurukul.utils.DBConnection, java.io.*" %>
 <%

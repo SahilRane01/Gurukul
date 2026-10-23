@@ -1,3 +1,11 @@
+/**
+ * File: LoginServlet.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It checks your secret password at the school front gate.
+ * - WHY IT IS USED: If your password is right, it opens the door! If wrong, it tells you: "Try again!"
+ */
+
 package com.gurukul.controllers;
 
 import com.gurukul.models.UserProfile;

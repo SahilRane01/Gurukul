@@ -1,3 +1,11 @@
+<%--
+  File: userProfile.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: Your personal student passport! Shows your photo, your phone number, and allows you to pick a new password.
+  - WHY IT IS USED: So you can keep your info up to date and your account safe!
+--%>
+
 <%@ page import="com.gurukul.models.UserProfile" %>
 <%@ page isELIgnored="false" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />

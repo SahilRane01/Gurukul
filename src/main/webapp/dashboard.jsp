@@ -1,3 +1,11 @@
+<%--
+  File: dashboard.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The student's home base! It shows attendance stars, upcoming homework, quiz scores, and notices.
+  - WHY IT IS USED: When you open the computer, this tells you everything you need to know about your school day!
+--%>
+
 <%-- 
     WARNING: DO NOT USE AUTO-FORMATTERS ON THIS JSP FILE.
     Aggressive formatting splits Java string literals across lines, 

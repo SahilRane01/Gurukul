@@ -1,3 +1,11 @@
+/**
+ * File: AssignmentController.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is the homework boss! It makes new homework tasks, deletes old ones, and collects student work.
+ * - WHY IT IS USED: So teachers don't have to carry heavy paper stacks—everything is done neatly on the computer!
+ */
+
 package com.gurukul.controllers;
 
 import com.gurukul.models.UserProfile;

@@ -1,3 +1,11 @@
+/**
+ * File: DBConnection.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is like a magic key that opens the big toy box (database) where all school info is saved.
+ * - WHY IT IS USED: Without this key, the computer cannot read or save any student names, marks, or homework.
+ */
+
 package com.gurukul.utils;
 
 import java.sql.Connection;
@@ -23,6 +31,6 @@ public class DBConnection {
      */
     public static Connection getManualConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);
-        return DriverManager.getConnection("jdbc:mysql://192.168.0.105:3306/gurukul", "root", "Admin");
+        return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gurukul", "root", "");
     }
 }

@@ -1,3 +1,11 @@
+<%--
+  File: meeting.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: A video room where everyone's face shows up on camera, with buttons to mute mic or share drawings!
+  - WHY IT IS USED: So teachers and students can see and talk to each other even when studying from home!
+--%>
+
 <%@ page import="com.gurukul.models.UserProfile" isELIgnored="true" %>
 <%
     if (session.getAttribute("user") == null) {

@@ -1,3 +1,11 @@
+/**
+ * File: Submission.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It is the homework paper a kid hands in to the teacher with their name and answers on it.
+ * - WHY IT IS USED: So the teacher can read it, give stars or grades, and write "Great job!" on it.
+ */
+
 package com.gurukul.models;
 
 import java.io.Serializable;

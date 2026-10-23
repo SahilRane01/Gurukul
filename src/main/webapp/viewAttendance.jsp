@@ -1,3 +1,11 @@
+<%--
+  File: viewAttendance.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: Shows your attendance calendar and percentage bar (e.g., "You came to class 95% of the time!").
+  - WHY IT IS USED: So you and your parents can see if you missed any classes!
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.UserProfile, com.gurukul.utils.DBConnection" %>
 <%

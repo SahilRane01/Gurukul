@@ -1,3 +1,11 @@
+/**
+ * File: ResultController.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It adds up all the numbers on your test (like 40 + 30 + 20) and calculates if you get an 'A' grade!
+ * - WHY IT IS USED: So report cards are made automatically, fairly, and with zero math errors!
+ */
+
 package com.gurukul.controllers;
 
 import com.gurukul.models.UserProfile;

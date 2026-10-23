@@ -1,3 +1,11 @@
+/**
+ * File: DownloadTemplateServlet.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It gives the teacher a blank fill-in-the-blanks sheet (like an Excel sheet) to download.
+ * - WHY IT IS USED: So the teacher can easily type all student names in one list without making mistakes!
+ */
+
 package com.gurukul.controllers;
 
 import jakarta.servlet.ServletException;

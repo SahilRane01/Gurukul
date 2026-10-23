@@ -1,3 +1,11 @@
+<%--
+  File: quizResult.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The score screen after a quiz! Shows green for questions you got right and red for ones you missed.
+  - WHY IT IS USED: So you can learn from your mistakes and see how awesome you did!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

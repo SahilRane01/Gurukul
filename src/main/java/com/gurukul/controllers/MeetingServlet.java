@@ -1,3 +1,11 @@
+/**
+ * File: MeetingServlet.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It rings the school bell for online video class and tells everyone which virtual room to join.
+ * - WHY IT IS USED: So the whole class can meet together on camera at the right time!
+ */
+
 package com.gurukul.controllers;
 
 import com.gurukul.models.UserProfile;

@@ -1,3 +1,11 @@
+<%--
+  File: createEvent.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: A form where teachers can put fun days onto the school calendar (like Science Fair!).
+  - WHY IT IS USED: So nobody forgets when the big fun day is happening!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

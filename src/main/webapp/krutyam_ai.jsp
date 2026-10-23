@@ -1,3 +1,11 @@
+<%--
+  File: krutyam_ai.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: A friendly robot chat screen (Krutyam AI) that helps you with homework and explains tricky things simply.
+  - WHY IT IS USED: Like having a super smart robotic best friend who answers your questions 24/7!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat, java.io.*, java.net.*" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

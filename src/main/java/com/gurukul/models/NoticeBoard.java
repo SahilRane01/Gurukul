@@ -1,3 +1,11 @@
+/**
+ * File: NoticeBoard.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It holds big news that gets pinned to the school notice board for everyone to see.
+ * - WHY IT IS USED: So the principal and teachers can announce holidays or important school rules to all kids!
+ */
+
 package com.gurukul.models;
 
 import java.io.Serializable;

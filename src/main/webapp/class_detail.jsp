@@ -1,3 +1,11 @@
+<%--
+  File: class_detail.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The inside of your classroom! It has tabs to chat with friends, see homework, and check your marks.
+  - WHY IT IS USED: Just like sitting at your school desk with your notebooks and classmates around you!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection, java.text.SimpleDateFormat" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

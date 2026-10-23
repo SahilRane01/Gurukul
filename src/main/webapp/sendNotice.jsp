@@ -1,3 +1,11 @@
+<%--
+  File: sendNotice.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: A notice board painter! Teachers write a headline and message, then pin it for all kids to read.
+  - WHY IT IS USED: So the school can shout out: "Holiday tomorrow!" or "School picnic next week!"
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%

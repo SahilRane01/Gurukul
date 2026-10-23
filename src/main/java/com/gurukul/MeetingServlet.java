@@ -1,3 +1,11 @@
+/**
+ * File: MeetingServlet.java
+ *
+ * EXPLAIN LIKE I AM 5 (ELI5):
+ * - WHAT IT DOES: It helps set up online video call rooms like Zoom or Google Meet.
+ * - WHY IT IS USED: So teachers and kids can see each other, talk, and have class on the computer from home!
+ */
+
 package com.gurukul;
 
 import java.io.IOException;

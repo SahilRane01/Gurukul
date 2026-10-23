@@ -1,3 +1,11 @@
+<%--
+  File: takeQuiz.jsp
+  
+  EXPLAIN LIKE I AM 5 (ELI5):
+  - WHAT IT DOES: The game test screen! Shows one question at a time with a ticking clock and clickable choice buttons.
+  - WHY IT IS USED: Where kids answer questions before the timer runs out!
+--%>
+
 <%@ page import="java.sql.*, java.util.*, com.gurukul.models.*, com.gurukul.utils.DBConnection" %>
 <jsp:useBean id="user" class="com.gurukul.models.UserProfile" scope="session" />
 <%
