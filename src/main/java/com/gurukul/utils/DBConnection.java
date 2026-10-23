@@ -1,7 +1,7 @@
 /**
  * File: DBConnection.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is like a magic key that opens the big toy box (database) where all school info is saved.
  * - WHY IT IS USED: Without this key, the computer cannot read or save any student names, marks, or homework.
  */

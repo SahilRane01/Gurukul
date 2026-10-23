@@ -1,7 +1,7 @@
 <%--
   File: aiChat.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A secret pipeline that passes messages back and forth with the smart AI robot brain.
   - WHY IT IS USED: So the web page can chat with the robot without getting blocked or showing secret codes.
 --%>

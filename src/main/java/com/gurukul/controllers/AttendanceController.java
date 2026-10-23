@@ -1,7 +1,7 @@
 /**
  * File: AttendanceController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It does daily roll-call! It marks who is here (Present), who stayed home (Absent), or who was Late.
  * - WHY IT IS USED: To keep track of how many days each student came to school.
  */

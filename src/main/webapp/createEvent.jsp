@@ -1,7 +1,7 @@
 <%--
   File: createEvent.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A form where teachers can put fun days onto the school calendar (like Science Fair!).
   - WHY IT IS USED: So nobody forgets when the big fun day is happening!
 --%>

@@ -1,4 +1,4 @@
-# Gurukul - Every Single File, Construct, Method, If-Else & Try-Catch (Explained for a 5-Year-Old! 🧒🎈)
+# Gurukul - Every Single File, Construct, Method, If-Else & Try-Catch (Simple & Clear Guide)
 
 This guide takes **every single one of the 58 files** in Gurukul (all controllers, all models, all utility files, and all JSP views) and explains what **every single construct, method, if-else decision, and try-catch safety net** is doing in simple child terms!
 

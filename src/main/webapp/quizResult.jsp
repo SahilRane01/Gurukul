@@ -1,7 +1,7 @@
 <%--
   File: quizResult.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The score screen after a quiz! Shows green for questions you got right and red for ones you missed.
   - WHY IT IS USED: So you can learn from your mistakes and see how awesome you did!
 --%>

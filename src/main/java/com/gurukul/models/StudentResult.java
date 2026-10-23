@@ -1,7 +1,7 @@
 /**
  * File: StudentResult.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is a report card holding all the marks a student got in tests, homework, and oral exams.
  * - WHY IT IS USED: So parents and students can see their final marks and celebrate their good work!
  */

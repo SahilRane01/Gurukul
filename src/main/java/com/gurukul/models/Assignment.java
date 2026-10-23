@@ -1,7 +1,7 @@
 /**
  * File: Assignment.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is a homework card that holds the homework title, what you need to do, and when it is due.
  * - WHY IT IS USED: So kids know what homework they must finish before play time is over!
  */

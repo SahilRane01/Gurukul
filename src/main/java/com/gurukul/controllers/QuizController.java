@@ -1,7 +1,7 @@
 /**
  * File: QuizController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It hands out the quiz game, counts the timer, checks your answers, and gives you your final score!
  * - WHY IT IS USED: So students get their test scores right away without waiting days for the teacher to check papers.
  */

@@ -1,7 +1,7 @@
 /**
  * File: TeacherController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It takes orders from the teacher's screen and saves them into the computer's memory book.
  * - WHY IT IS USED: It helps the teacher tell the computer to add new homework, post news, and manage the class.
  */

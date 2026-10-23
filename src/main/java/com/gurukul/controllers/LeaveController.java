@@ -1,7 +1,7 @@
 /**
  * File: LeaveController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It takes leave notes from students and shows them to the teacher to approve or say no.
  * - WHY IT IS USED: So students don't get marked absent unfairly when they have a fever or doctor visit!
  */

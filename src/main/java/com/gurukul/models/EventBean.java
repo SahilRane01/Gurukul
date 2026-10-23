@@ -1,7 +1,7 @@
 /**
  * File: EventBean.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It holds info about fun school events like Sports Day, Picnic, or Exam Day.
  * - WHY IT IS USED: So the school calendar can show everyone what special day is coming next!
  */

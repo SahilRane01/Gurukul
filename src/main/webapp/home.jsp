@@ -1,7 +1,7 @@
 <%--
   File: home.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A friendly welcome room with big buttons: Go to Dashboard, View Classes, or Logout.
   - WHY IT IS USED: So you never get lost and can easily click where you want to go!
 --%>

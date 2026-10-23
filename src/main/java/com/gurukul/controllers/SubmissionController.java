@@ -1,7 +1,7 @@
 /**
  * File: SubmissionController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is the homework drop-box! Kids put their homework inside, and teachers take it out to grade it.
  * - WHY IT IS USED: So homework never gets lost under the bed or eaten by the dog!
  */

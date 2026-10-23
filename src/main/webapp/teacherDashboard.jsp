@@ -1,7 +1,7 @@
 <%--
   File: teacherDashboard.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The teacher's big desk! It has shortcuts to take attendance, give homework, check tests, and start video calls.
   - WHY IT IS USED: Gives teachers super-powers to run their whole class easily from one screen!
 --%>

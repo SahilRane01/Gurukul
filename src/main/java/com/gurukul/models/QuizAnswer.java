@@ -1,7 +1,7 @@
 /**
  * File: QuizAnswer.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It remembers which bubble (A, B, C, or D) the kid tapped on for a quiz question.
  * - WHY IT IS USED: So the computer can check if the kid picked the right or wrong answer!
  */

@@ -1,7 +1,7 @@
 /**
  * File: TeacherController.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is the teacher's super-helper! It uploads big lists of students, posts news, and schedules events.
  * - WHY IT IS USED: To make the teacher's busy day easier with one click!
  */

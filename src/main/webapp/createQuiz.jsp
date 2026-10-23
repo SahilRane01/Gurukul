@@ -1,7 +1,7 @@
 <%--
   File: createQuiz.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The teacher's quiz maker! The teacher types questions, adds choices A, B, C, D, and picks the right answer.
   - WHY IT IS USED: So the teacher can build fun game-tests for the students!
 --%>

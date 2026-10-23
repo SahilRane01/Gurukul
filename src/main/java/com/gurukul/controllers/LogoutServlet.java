@@ -1,7 +1,7 @@
 /**
  * File: LogoutServlet.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It says goodbye, locks your backpack, and sends you back out the front gate.
  * - WHY IT IS USED: So nobody else can touch your school account when you walk away from the computer.
  */

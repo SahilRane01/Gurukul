@@ -1,7 +1,7 @@
 <%--
   File: sendNotice.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A notice board painter! Teachers write a headline and message, then pin it for all kids to read.
   - WHY IT IS USED: So the school can shout out: "Holiday tomorrow!" or "School picnic next week!"
 --%>

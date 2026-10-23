@@ -1,7 +1,7 @@
 /**
  * File: QuizQuestion.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It holds one question with 4 choices (A, B, C, D) and remembers which one is the secret right answer.
  * - WHY IT IS USED: To build the quiz test paper that shows up on the student's screen!
  */

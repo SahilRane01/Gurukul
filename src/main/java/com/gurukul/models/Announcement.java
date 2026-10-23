@@ -1,7 +1,7 @@
 /**
  * File: Announcement.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is a little sticky note that holds a teacher's message to the class.
  * - WHY IT IS USED: So the computer can remember who wrote the message, what it says, and when it was posted!
  */

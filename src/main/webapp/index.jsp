@@ -1,7 +1,7 @@
 <%--
   File: index.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The front porch of Gurukul! If you are already logged in, it opens your room. If not, it asks you to sign in.
   - WHY IT IS USED: It is the first door everyone knocks on when visiting the website!
 --%>

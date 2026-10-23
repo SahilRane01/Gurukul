@@ -1,7 +1,7 @@
 /**
  * File: RegistrationServlet.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It writes down a brand new student's name, email, and password to give them a school account.
  * - WHY IT IS USED: So new kids can join Gurukul school and start learning!
  */

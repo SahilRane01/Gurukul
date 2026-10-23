@@ -1,7 +1,7 @@
 <%--
   File: assignment_detail.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A big page showing one homework assignment. Kids can upload answers; teachers can give stars.
   - WHY IT IS USED: So both student and teacher have one clean place to see and grade this specific homework!
 --%>

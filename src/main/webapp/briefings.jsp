@@ -1,7 +1,7 @@
 <%--
   File: briefings.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: Looks like a cool sci-fi spaceship screen showing today's most important school news and deadlines!
   - WHY IT IS USED: So kids can quickly read what they must do today in under 1 minute!
 --%>

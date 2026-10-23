@@ -1,6 +1,6 @@
-# Gurukul - Every Single Try-Catch Explained for a Child 🧒🎈
+# Gurukul - Every Single Try-Catch Simple & Clear Explanation Guide
 
-### What is a `try-catch`? (Explain like I'm 5):
+### What is a `try-catch`? (Simple Explanation):
 - **`try`**: Think of a child wearing a superhero helmet and trying to climb monkey bars: *"I am going to try to do this tricky thing!"*
 - **`catch`**: A giant soft trampoline right under the bars! If the child slips or drops a toy (an error/exception happens), the trampoline catches them gently so they don't get hurt or break the computer!
 - **`finally`**: Washing your hands after playtime! No matter whether you had fun or fell into the trampoline, you always wash your hands and put your toys back (like closing database doors).

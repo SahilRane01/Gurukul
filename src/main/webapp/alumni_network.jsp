@@ -1,7 +1,7 @@
 <%--
   File: alumni_network.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A wall of fame showing older kids who already grew up, graduated, and got big jobs.
   - WHY IT IS USED: So current students can ask them: "How did you do it? Can you guide me?"
 --%>

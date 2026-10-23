@@ -1,7 +1,7 @@
 <%--
   File: createStudent.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: Where the teacher signs up new kids for school, either one by one or all at once using a list!
   - WHY IT IS USED: So all the kids get their accounts and can start learning!
 --%>

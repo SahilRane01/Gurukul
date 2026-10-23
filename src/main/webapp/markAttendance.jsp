@@ -1,7 +1,7 @@
 <%--
   File: markAttendance.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The teacher's attendance sheet with green checkmarks for kids who are here today!
   - WHY IT IS USED: To see who is in class and make sure nobody went missing!
 --%>

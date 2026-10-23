@@ -1,7 +1,7 @@
 /**
  * File: UserProfileServlet.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It lets you change your phone number, your email, or your secret password.
  * - WHY IT IS USED: So if your phone changes or you want a stronger password, you can update it yourself!
  */

@@ -1,7 +1,7 @@
 <%--
   File: schemaDump.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: A peek inside the computer's memory box to show programmers all the list names and data cubbies.
   - WHY IT IS USED: For the tech doctor to see if all database boxes are neatly in place!
 --%>

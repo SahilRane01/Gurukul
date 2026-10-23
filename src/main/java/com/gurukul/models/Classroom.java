@@ -1,7 +1,7 @@
 /**
  * File: Classroom.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is like a digital school room with a name, a teacher, and a bunch of students inside.
  * - WHY IT IS USED: To keep everyone in the right room so Math students do not get mixed up with Art students!
  */

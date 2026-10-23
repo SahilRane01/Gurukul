@@ -1,7 +1,7 @@
 <%--
   File: class_detail.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The inside of your classroom! It has tabs to chat with friends, see homework, and check your marks.
   - WHY IT IS USED: Just like sitting at your school desk with your notebooks and classmates around you!
 --%>

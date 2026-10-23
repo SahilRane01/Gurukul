@@ -1,7 +1,7 @@
 <%--
   File: takeQuiz.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The game test screen! Shows one question at a time with a ticking clock and clickable choice buttons.
   - WHY IT IS USED: Where kids answer questions before the timer runs out!
 --%>

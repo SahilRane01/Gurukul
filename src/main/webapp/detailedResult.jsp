@@ -1,7 +1,7 @@
 <%--
   File: detailedResult.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The big report card! It shows all your test points, your teacher's notes, and whether you passed!
   - WHY IT IS USED: To show your parents and feel proud of your hard work!
 --%>

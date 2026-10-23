@@ -1,7 +1,7 @@
 /**
  * File: ResultConfig.java
  *
- * EXPLAIN LIKE I AM 5 (ELI5):
+ * OVERVIEW:
  * - WHAT IT DOES: It is the grading rule book (like: 90 points gives you an 'A' star, 40 points to pass).
  * - WHY IT IS USED: So the computer knows the rules before deciding who gets an A, B, C, or who needs to try again.
  */

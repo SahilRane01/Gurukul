@@ -1,7 +1,7 @@
 <%--
   File: social_hub.jsp
   
-  EXPLAIN LIKE I AM 5 (ELI5):
+  OVERVIEW:
   - WHAT IT DOES: The digital playground and cafeteria where students can chat and share cool ideas with school friends!
   - WHY IT IS USED: Because learning with friends and hanging out is super fun!
 --%>
