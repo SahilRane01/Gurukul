@@ -107,4 +107,4 @@ The Gurukul Web Application provides a scalable and efficient platform for manag
 This stack is perfect for college projects, but if later you want to scale/start a startup:
 
 - Upgrade backend -> Spring Boot
-- Frontend -> React
+- Frontend -> React 
